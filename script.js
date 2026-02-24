@@ -23,9 +23,9 @@ function initParticles() {
     let particles = [];
     let mouse = { x: null, y: null };
     
-    const particleCount = 30;
-    const connectionDistance = 120;
-    const mouseDistance = 150;
+    const particleCount = 65;
+    const connectionDistance = 90;
+    const mouseDistance = 100;
     
     function resize() {
         width = window.innerWidth;
