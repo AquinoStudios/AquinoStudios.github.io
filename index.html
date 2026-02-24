@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquino Studios - Obby Imposible</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fondo animado de partículas -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Header con logo -->
+    <header class="header">
+        <div class="logo-container">
+            <div class="logo-text">
+                <h1>AQUINO STUDIOS</h1>
+                <span class="tagline">Game Development</span>
+            </div>
+            <div class="logo-image">
+                <!-- Aquí va tu logo, reemplaza la ruta -->
+                <img src="logo.png" alt="Aquino Studios Logo" id="studioLogo">
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container">
+        <!-- Sección del Estudio -->
+        <section class="studio-section">
+            <h2 class="section-title">Sobre el Estudio</h2>
+            <div class="studio-content">
+                <p>
+                    Aquino Studios es un estudio de desarrollo de videojuegos indie enfocado en crear 
+                    experiencias divertidas y desafiantes en Roblox. Nuestro objetivo es diseñar juegos 
+                    que pongan a prueba tus habilidades y te mantengan enganchado por horas.
+                </p>
+                <p>
+                    Con pasión por los juegos de plataformas y obstáculos, buscamos innovar en el género 
+                    <em>obby</em> con mecánicas únicas y niveles creativos que desafían hasta al jugador 
+                    más experimentado.
+                </p>
+            </div>
+        </section>
+
+        <!-- Sección del Juego -->
+        <section class="game-section">
+            <h2 class="section-title">Nuestro Juego</h2>
+            <div class="game-card">
+                <div class="game-icon">🏆</div>
+                <h3 class="game-title">OBBY IMPOSIBLE</h3>
+                <p class="game-description">
+                    El desafío definitivo de parkour en Roblox. ¿Tienes lo necesario para completar 
+                    el obby más difícil de la plataforma? Saltos precisos, timing perfecto y nervios 
+                    de acero son requisitos obligatorios.
+                </p>
+                <ul class="game-features">
+                    <li>🎮 50+ niveles de dificultad creciente</li>
+                    <li>⚡ Mecánicas de velocidad únicas</li>
+                    <li>🏅 Sistema de logros y recompensas</li>
+                    <li>👥 Competición con amigos</li>
+                </ul>
+                <a href="https://www.roblox.com/games/TU-ID-AQUI" target="_blank" class="play-btn" id="playButton">
+                    <span class="btn-text">JUGAR AHORA</span>
+                    <span class="btn-shine"></span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Aquino Studios. Todos los derechos reservados.</p>
+        <p class="roblox-note">Disponible en Roblox</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
