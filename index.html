@@ -5,74 +5,331 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aquino Studios - Obby Imposible</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Fondo animado de partículas -->
+    <!-- Fondo animado -->
     <canvas id="bgCanvas"></canvas>
 
-    <!-- Header con logo -->
-    <header class="header">
-        <div class="logo-container">
-            <div class="logo-text">
-                <h1>AQUINO STUDIOS</h1>
-                <span class="tagline">Game Development</span>
+    <!-- Barra de navegación superior -->
+    <nav class="navbar">
+        <div class="nav-brand">AQUINO STUDIOS</div>
+        <div class="nav-links">
+            <a href="#inicio" class="nav-link active">Inicio</a>
+            <a href="#juegos" class="nav-link">Juegos</a>
+            <a href="#nosotros" class="nav-link">Nosotros</a>
+            <a href="#contacto" class="nav-link">Contacto</a>
+        </div>
+        <div class="nav-social">
+            <a href="https://youtube.com/tu-canal" target="_blank" class="social-icon" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://twitter.com/tu-cuenta" target="_blank" class="social-icon" title="Twitter/X">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://discord.gg/tu-invite" target="_blank" class="social-icon" title="Discord">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="https://tiktok.com/@tu-cuenta" target="_blank" class="social-icon" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://instagram.com/tu-cuenta" target="_blank" class="social-icon" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header principal con logo -->
+    <header class="header" id="inicio">
+        <div class="header-content">
+            <div class="logo-wrapper">
+                <div class="logo-glow"></div>
+                <div class="logo-image">
+                    <img src="logo.png" alt="Aquino Studios Logo" id="studioLogo">
+                </div>
             </div>
-            <div class="logo-image">
-                <!-- Aquí va tu logo, reemplaza la ruta -->
-                <img src="logo.png" alt="Aquino Studios Logo" id="studioLogo">
+            <div class="header-text">
+                <h1 class="glitch" data-text="AQUINO STUDIOS">AQUINO STUDIOS</h1>
+                <p class="subtitle">Creamos experiencias épicas en Roblox</p>
+                <div class="header-buttons">
+                    <a href="#juegos" class="btn btn-primary">
+                        <i class="fas fa-gamepad"></i> Ver Juegos
+                    </a>
+                    <a href="https://discord.gg/tu-invite" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-discord"></i> Unirse al Discord
+                    </a>
+                </div>
             </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
     </header>
 
-    <!-- Contenido principal -->
-    <main class="container">
-        <!-- Sección del Estudio -->
-        <section class="studio-section">
-            <h2 class="section-title">Sobre el Estudio</h2>
-            <div class="studio-content">
-                <p>
-                    Aquino Studios es un estudio de desarrollo de videojuegos indie enfocado en crear 
-                    experiencias divertidas y desafiantes en Roblox. Nuestro objetivo es diseñar juegos 
-                    que pongan a prueba tus habilidades y te mantengan enganchado por horas.
-                </p>
-                <p>
-                    Con pasión por los juegos de plataformas y obstáculos, buscamos innovar en el género 
-                    <em>obby</em> con mecánicas únicas y niveles creativos que desafían hasta al jugador 
-                    más experimentado.
-                </p>
+    <!-- Sección de Estadísticas -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <i class="fas fa-users"></i>
+                <span class="stat-number" data-target="50000">0</span>
+                <span class="stat-label">Jugadores</span>
             </div>
-        </section>
+            <div class="stat-item">
+                <i class="fas fa-gamepad"></i>
+                <span class="stat-number" data-target="3">0</span>
+                <span class="stat-label">Juegos</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-heart"></i>
+                <span class="stat-number" data-target="125000">0</span>
+                <span class="stat-label">Me gusta</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-calendar"></i>
+                <span class="stat-number" data-target="2021">0</span>
+                <span class="stat-label">Desde</span>
+            </div>
+        </div>
+    </section>
 
-        <!-- Sección del Juego -->
-        <section class="game-section">
-            <h2 class="section-title">Nuestro Juego</h2>
-            <div class="game-card">
-                <div class="game-icon">🏆</div>
-                <h3 class="game-title">OBBY IMPOSIBLE</h3>
-                <p class="game-description">
-                    El desafío definitivo de parkour en Roblox. ¿Tienes lo necesario para completar 
-                    el obby más difícil de la plataforma? Saltos precisos, timing perfecto y nervios 
-                    de acero son requisitos obligatorios.
-                </p>
-                <ul class="game-features">
-                    <li>🎮 50+ niveles de dificultad creciente</li>
-                    <li>⚡ Mecánicas de velocidad únicas</li>
-                    <li>🏅 Sistema de logros y recompensas</li>
-                    <li>👥 Competición con amigos</li>
-                </ul>
-                <a href="https://www.roblox.com/games/132623769660113" target="_blank" class="play-btn" id="playButton">
-                    <span class="btn-text">JUGAR AHORA</span>
-                    <span class="btn-shine"></span>
-                </a>
+    <!-- Sección de Juegos -->
+    <section class="games-section" id="juegos">
+        <div class="section-header">
+            <h2 class="section-title">NUESTROS JUEGOS</h2>
+            <p class="section-desc">Descubre nuestras creaciones en Roblox</p>
+        </div>
+
+        <div class="games-grid">
+            <!-- Juego Principal: Obby Imposible -->
+            <div class="game-card featured">
+                <div class="game-badge">POPULAR</div>
+                <div class="game-image">
+                    <img src="obby-imposible.png" alt="Obby Imposible">
+                    <div class="game-overlay">
+                        <button class="play-btn-large" onclick="openGame('https://www.roblox.com/games/TU-ID-AQUI')">
+                            <i class="fas fa-play"></i> JUGAR AHORA
+                        </button>
+                    </div>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">OBBY IMPOSIBLE</h3>
+                    <p class="game-desc">El desafío definitivo de parkour. ¿Puedes completar los 50+ niveles más difíciles de Roblox?</p>
+                    <div class="game-stats">
+                        <span><i class="fas fa-users"></i> 50K+ jugadores</span>
+                        <span><i class="fas fa-star"></i> 4.8/5</span>
+                    </div>
+                    <div class="game-tags">
+                        <span class="tag">Parkour</span>
+                        <span class="tag">Difícil</span>
+                        <span class="tag">Multijugador</span>
+                    </div>
+                    <div class="game-actions">
+                        <a href="https://www.roblox.com/games/TU-ID-AQUI" target="_blank" class="btn-game btn-play">
+                            <i class="fas fa-play"></i> Jugar
+                        </a>
+                        <button class="btn-game btn-info" onclick="showGameInfo('obby')">
+                            <i class="fas fa-info-circle"></i> Info
+                        </button>
+                        <button class="btn-game btn-share" onclick="shareGame('Obby Imposible')">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
+
+            <!-- Juego 2: Fácil de agregar más -->
+            <div class="game-card">
+                <div class="game-image">
+                    <img src="game2.png" alt="Próximo Juego">
+                    <div class="game-overlay">
+                        <button class="play-btn-large" onclick="openGame('https://www.roblox.com/games/TU-ID-2')">
+                            <i class="fas fa-play"></i> JUGAR AHORA
+                        </button>
+                    </div>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">SPEED RUN SIMULATOR</h3>
+                    <p class="game-desc">Corre más rápido que nadie. Compite contra tus amigos y sé el más veloz.</p>
+                    <div class="game-stats">
+                        <span><i class="fas fa-users"></i> 25K+ jugadores</span>
+                        <span><i class="fas fa-star"></i> 4.5/5</span>
+                    </div>
+                    <div class="game-tags">
+                        <span class="tag">Simulador</span>
+                        <span class="tag">Carreras</span>
+                    </div>
+                    <div class="game-actions">
+                        <a href="https://www.roblox.com/games/TU-ID-2" target="_blank" class="btn-game btn-play">
+                            <i class="fas fa-play"></i> Jugar
+                        </a>
+                        <button class="btn-game btn-info" onclick="showGameInfo('speed')">
+                            <i class="fas fa-info-circle"></i> Info
+                        </button>
+                        <button class="btn-game btn-share" onclick="shareGame('Speed Run Simulator')">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Juego 3: Placeholder para futuro -->
+            <div class="game-card coming-soon">
+                <div class="game-image">
+                    <div class="placeholder-content">
+                        <i class="fas fa-question"></i>
+                        <span>PRÓXIMAMENTE</span>
+                    </div>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">?????</h3>
+                    <p class="game-desc">Un nuevo proyecto secreto está en desarrollo. ¡Mantente atento a nuestras redes!</p>
+                    <div class="game-tags">
+                        <span class="tag tag-soon">En desarrollo</span>
+                    </div>
+                    <div class="game-actions">
+                        <button class="btn-game btn-notify" onclick="notifyMe()">
+                            <i class="fas fa-bell"></i> Notificarme
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Nosotros -->
+    <section class="about-section" id="nosotros">
+        <div class="about-container">
+            <div class="about-content">
+                <h2 class="section-title">SOBRE NOSOTROS</h2>
+                <p>
+                    Aquino Studios nació en 2021 con una misión clara: crear los juegos más divertidos 
+                    y desafiantes de Roblox. Somos un equipo apasionado por los videojuegos que busca 
+                    innovar constantemente.
+                </p>
+                <p>
+                    Desde nuestro primer juego hasta el día de hoy, hemos crecido gracias a la increíble 
+                    comunidad que nos apoya. Cada like, cada comentario y cada partida nos motiva a seguir 
+                    mejorando.
+                </p>
+                <div class="about-features">
+                    <div class="feature">
+                        <i class="fas fa-rocket"></i>
+                        <span>Innovación constante</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-heart"></i>
+                        <span>Hecho con pasión</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-users"></i>
+                        <span>Comunidad primero</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <div class="image-frame">
+                    <img src="team.png" alt="Nuestro equipo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Redes Sociales -->
+    <section class="social-section" id="contacto">
+        <h2 class="section-title">SÍGUENOS</h2>
+        <p class="section-desc">Únete a nuestra comunidad y no te pierdas ninguna novedad</p>
+        
+        <div class="social-grid">
+            <a href="https://youtube.com/tu-canal" target="_blank" class="social-card youtube">
+                <i class="fab fa-youtube"></i>
+                <span>YouTube</span>
+                <small>Suscríbete</small>
+            </a>
+            <a href="https://discord.gg/tu-invite" target="_blank" class="social-card discord">
+                <i class="fab fa-discord"></i>
+                <span>Discord</span>
+                <small>Únete al servidor</small>
+            </a>
+            <a href="https://twitter.com/tu-cuenta" target="_blank" class="social-card twitter">
+                <i class="fab fa-x-twitter"></i>
+                <span>Twitter / X</span>
+                <small>Síguenos</small>
+            </a>
+            <a href="https://tiktok.com/@tu-cuenta" target="_blank" class="social-card tiktok">
+                <i class="fab fa-tiktok"></i>
+                <span>TikTok</span>
+                <small>Videos divertidos</small>
+            </a>
+            <a href="https://instagram.com/tu-cuenta" target="_blank" class="social-card instagram">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+                <small>Behind the scenes</small>
+            </a>
+            <a href="https://roblox.com/groups/tu-grupo" target="_blank" class="social-card roblox">
+                <i class="fas fa-cube"></i>
+                <span>Grupo Roblox</span>
+                <small>Únete al grupo</small>
+            </a>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <h3>¿Quieres ser el primero en enterarte de las novedades?</h3>
+            <p>Suscríbete para recibir noticias sobre actualizaciones y nuevos juegos</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" placeholder="Tu correo electrónico" required>
+                <button type="submit" class="btn-subscribe">
+                    <i class="fas fa-paper-plane"></i> Suscribirse
+                </button>
+            </form>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Aquino Studios. Todos los derechos reservados.</p>
-        <p class="roblox-note">Disponible en Roblox</p>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>AQUINO STUDIOS</h3>
+                <p>Creando mundos, una aventura a la vez.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Enlaces</h4>
+                <a href="#inicio">Inicio</a>
+                <a href="#juegos">Juegos</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <div class="footer-social">
+                <h4>Redes</h4>
+                <div class="footer-social-icons">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Aquino Studios. Todos los derechos reservados.</p>
+            <p class="made-with">Hecho con <i class="fas fa-heart"></i> para la comunidad de Roblox</p>
+        </div>
     </footer>
+
+    <!-- Modal para información de juegos -->
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Botón volver arriba -->
+    <button id="backToTop" class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>
