@@ -1,436 +1,343 @@
-// ==========================================
-// AQUINO STUDIOS - SCRIPT ACTUALIZADO
-// ==========================================
+/* ============================================
+   SCRIPT.JS - LÓGICA PRINCIPAL CÓDIGO ROJO
+   ============================================ */
 
-document.addEventListener('DOMContentLoaded', function() {
-    initParticles();
-    initNavigation();
-    initCounters();
-    initScrollEffects();
-    initBackToTop();
-    initSmoothScroll();
+// ============================================
+// CONFIGURACIÓN
+// ============================================
+
+const CONFIG = {
+  TELEGRAM_URL: 'https://t.me/tugrupo', // Cambiar por tu grupo Telegram
+  EMAIL: 'contacto@codigorojo.io',
+  FORM_VALIDATION: true,
+};
+
+// ============================================
+// ELEMENTOS DEL DOM
+// ============================================
+
+const elements = {
+  modal: document.getElementById('contactModal'),
+  modalClose: document.getElementById('modalClose'),
+  floatingBtn: document.getElementById('floatingBtn'),
+  navbar: document.querySelector('.navbar'),
+  faqItems: document.querySelectorAll('.faq-item'),
+  faqQuestions: document.querySelectorAll('.faq-question'),
+  contactForm: document.getElementById('contactForm'),
+  btnSolicitar: document.getElementById('btnSolicitar'),
+  btnTelegram: document.getElementById('btnTelegram'),
+  btnSolicitarFinal: document.getElementById('btnSolicitarFinal'),
+  btnTelegramFinal: document.getElementById('btnTelegramFinal'),
+};
+
+// ============================================
+// INICIALIZACIÓN
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  initAnimations();
+  initCounters();
+  initFAQ();
+  initModal();
+  initButtons();
+  initNavbar();
+  initFormValidation();
 });
 
-// ------------------------------------------
-// 1. SISTEMA DE PARTÍCULAS MEJORADO
-// ------------------------------------------
-function initParticles() {
-    const canvas = document.getElementById('bgCanvas');
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    let width, height;
-    let particles = [];
-    let mouse = { x: null, y: null };
-    
-    const particleCount = 65;
-    const connectionDistance = 90;
-    const mouseDistance = 100;
-    
-    function resize() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
-    }
-    
-    resize();
-    window.addEventListener('resize', resize);
-    
-    // Seguir mouse
-    window.addEventListener('mousemove', (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
+// ============================================
+// ANIMACIONES DE REVEAL AL SCROLL
+// ============================================
+
+function initAnimations() {
+  const revealElements = document.querySelectorAll('[data-reveal]');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
     });
-    
-    class Particle {
-        constructor() {
-            this.reset();
-        }
-        
-        reset() {
-            this.x = Math.random() * width;
-            this.y = Math.random() * height;
-            this.vx = (Math.random() - 0.5) * 0.5;
-            this.vy = (Math.random() - 0.5) * 0.5;
-            this.size = Math.random() * 2 + 1;
-            this.baseOpacity = Math.random() * 0.5 + 0.2;
-            this.opacity = this.baseOpacity;
-        }
-        
-        update() {
-            // Movimiento base
-            this.x += this.vx;
-            this.y += this.vy;
-            
-            // Rebote en bordes
-            if (this.x < 0 || this.x > width) this.vx *= -1;
-            if (this.y < 0 || this.y > height) this.vy *= -1;
-            
-            // Interacción con mouse
-            if (mouse.x && mouse.y) {
-                const dx = mouse.x - this.x;
-                const dy = mouse.y - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < mouseDistance) {
-                    const force = (mouseDistance - distance) / mouseDistance;
-                    this.x -= dx * force * 0.02;
-                    this.y -= dy * force * 0.02;
-                    this.opacity = Math.min(1, this.baseOpacity + force * 0.5);
-                } else {
-                    this.opacity = this.baseOpacity;
-                }
-            }
-        }
-        
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-            ctx.fill();
-        }
-    }
-    
-    // Crear partículas
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
-    
-    // Dibujar conexiones
-    function drawConnections() {
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < connectionDistance) {
-                    const opacity = (1 - distance / connectionDistance) * 0.15;
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
-                }
-            }
-            
-            // Conectar con mouse si está cerca
-            if (mouse.x && mouse.y) {
-                const dx = particles[i].x - mouse.x;
-                const dy = particles[i].y - mouse.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < mouseDistance) {
-                    const opacity = (1 - distance / mouseDistance) * 0.2;
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(mouse.x, mouse.y);
-                    ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
-                    ctx.stroke();
-                }
-            }
-        }
-    }
-    
-    // Loop de animación
-    let animationId;
-    function animate() {
-        ctx.clearRect(0, 0, width, height);
-        
-        particles.forEach(p => {
-            p.update();
-            p.draw();
-        });
-        
-        drawConnections();
-        animationId = requestAnimationFrame(animate);
-    }
-    
-    animate();
-    
-    // Pausar cuando no es visible
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            cancelAnimationFrame(animationId);
-        } else {
-            animate();
-        }
-    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
+  });
+
+  revealElements.forEach((element) => {
+    observer.observe(element);
+  });
 }
 
-// ------------------------------------------
-// 2. NAVEGACIÓN ACTIVA
-// ------------------------------------------
-function initNavigation() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    });
-    
-    // Navbar scroll effect
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(5, 5, 5, 0.98)';
-            navbar.style.padding = '10px 50px';
-        } else {
-            navbar.style.background = 'rgba(5, 5, 5, 0.9)';
-            navbar.style.padding = '15px 50px';
-        }
-    });
-}
+// ============================================
+// CONTADORES ANIMADOS
+// ============================================
 
-// ------------------------------------------
-// 3. CONTADORES ANIMADOS
-// ------------------------------------------
 function initCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    const speed = 200;
-    
-    const observerOptions = {
-        threshold: 0.5
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = parseInt(counter.getAttribute('data-target'));
-                animateCounter(counter, target);
-                observer.unobserve(counter);
-            }
-        });
-    }, observerOptions);
-    
-    counters.forEach(counter => observer.observe(counter));
+  const counters = document.querySelectorAll('[data-target]');
+  
+  const observerOptions = {
+    threshold: 0.5,
+  };
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+        animateCounter(entry.target);
+        entry.target.classList.add('counted');
+      }
+    });
+  }, observerOptions);
+
+  counters.forEach((counter) => {
+    counterObserver.observe(counter);
+  });
 }
 
-function animateCounter(counter, target) {
-    const duration = 2000;
-    const start = 0;
-    const startTime = performance.now();
-    
-    function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        // Easing
-        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-        const current = Math.floor(easeOutQuart * (target - start) + start);
-        
-        counter.textContent = current.toLocaleString();
-        
-        if (progress < 1) {
-            requestAnimationFrame(update);
-        } else {
-            counter.textContent = target.toLocaleString();
-        }
+function animateCounter(element) {
+  const target = parseInt(element.getAttribute('data-target'));
+  const duration = 2000;
+  const start = 0;
+  const increment = target / (duration / 16);
+  
+  let current = start;
+  
+  const updateCounter = () => {
+    current += increment;
+    if (current >= target) {
+      element.textContent = formatNumber(target);
+    } else {
+      element.textContent = formatNumber(Math.floor(current));
+      requestAnimationFrame(updateCounter);
     }
-    
-    requestAnimationFrame(update);
+  };
+
+  updateCounter();
 }
 
-// ------------------------------------------
-// 4. EFECTOS DE SCROLL
-// ------------------------------------------
-function initScrollEffects() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    // Animar elementos
-    const animateElements = document.querySelectorAll('.game-card, .about-content, .social-card, .stat-item');
-    animateElements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        observer.observe(el);
-    });
+function formatNumber(num) {
+  return num.toLocaleString('es-ES');
 }
 
-// ------------------------------------------
-// 5. BOTÓN VOLVER ARRIBA
-// ------------------------------------------
-function initBackToTop() {
-    const btn = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-            btn.classList.add('visible');
-        } else {
-            btn.classList.remove('visible');
+// ============================================
+// FAQ EXPANDIBLE
+// ============================================
+
+function initFAQ() {
+  elements.faqQuestions.forEach((question) => {
+    question.addEventListener('click', () => {
+      const faqItem = question.closest('.faq-item');
+      
+      elements.faqItems.forEach((item) => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
         }
+      });
+      
+      faqItem.classList.toggle('active');
     });
-}
+  });
 
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
-
-// ------------------------------------------
-// 6. SCROLL SUAVE PARA ENLACES
-// ------------------------------------------
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const offset = 80; // Altura del navbar
-                const targetPosition = target.offsetTop - offset;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-
-// ------------------------------------------
-// 7. FUNCIONES DE JUEGOS
-// ------------------------------------------
-function openGame(url) {
-    window.open(url, '_blank');
-}
-
-function showGameInfo(gameId) {
-    const modal = document.getElementById('gameModal');
-    const modalBody = document.getElementById('modalBody');
-    
-    const gameInfo = {
-        'obby': {
-            title: 'OBBY IMPOSIBLE',
-            content: `
-                <h2>OBBY IMPOSIBLE</h2>
-                <p>El desafío definitivo de parkour en Roblox. Con más de 50 niveles diseñados para poner a prueba tus habilidades.</p>
-                <h3>Características:</h3>
-                <ul>
-                    <li>50+ niveles de dificultad progresiva</li>
-                    <li>Sistema de checkpoints</li>
-                    <li>Tabla de clasificación global</li>
-                    <li>Recompensas diarias</li>
-                    <li>Actualizaciones mensuales con nuevos niveles</li>
-                </ul>
-                <h3>Próximas actualizaciones:</h3>
-                <p>Modo competitivo 1v1, nuevos obstáculos, y sistema de clanes.</p>
-            `
-        },
-        'speed': {
-            title: 'SPEED RUN SIMULATOR',
-            content: `
-                <h2>SPEED RUN SIMULATOR</h2>
-                <p>Compite contra tus amigos para ver quién es el más rápido de Roblox.</p>
-                <h3>Características:</h3>
-                <ul>
-                    <li>Carreras multijugador en tiempo real</li>
-                    <li>Mejoras de velocidad permanentes</li>
-                    <li>Mascotas que boostean tu velocidad</li>
-                    <li>Eventos semanales con premios</li>
-                </ul>
-            `
-        }
-    };
-    
-    const info = gameInfo[gameId];
-    if (info) {
-        modalBody.innerHTML = info.content;
-        modal.classList.add('active');
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.faq-item')) {
+      elements.faqItems.forEach((item) => {
+        item.classList.remove('active');
+      });
     }
+  });
+}
+
+// ============================================
+// MODAL DE CONTACTO
+// ============================================
+
+function initModal() {
+  elements.floatingBtn.addEventListener('click', openModal);
+  elements.btnSolicitar.addEventListener('click', openModal);
+  elements.btnSolicitarFinal.addEventListener('click', openModal);
+
+  elements.modalClose.addEventListener('click', closeModal);
+  elements.modal.addEventListener('click', (e) => {
+    if (e.target === elements.modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+}
+
+function openModal() {
+  elements.modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  elements.modal.querySelector('input').focus();
 }
 
 function closeModal() {
-    const modal = document.getElementById('gameModal');
-    modal.classList.remove('active');
+  elements.modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+  elements.contactForm.reset();
 }
 
-// Cerrar modal al hacer clic fuera
-window.onclick = function(event) {
-    const modal = document.getElementById('gameModal');
-    if (event.target === modal) {
-        modal.classList.remove('active');
-    }
+// ============================================
+// BOTONES DE ACCIÓN
+// ============================================
+
+function initButtons() {
+  elements.btnTelegram.addEventListener('click', () => {
+    window.open(CONFIG.TELEGRAM_URL, '_blank');
+  });
+
+  elements.btnTelegramFinal.addEventListener('click', () => {
+    window.open(CONFIG.TELEGRAM_URL, '_blank');
+  });
 }
 
-function shareGame(gameName) {
-    if (navigator.share) {
-        navigator.share({
-            title: gameName,
-            text: `¡Juega ${gameName} de Aquino Studios!`,
-            url: window.location.href
-        }).catch(err => console.log('Error compartiendo:', err));
-    } else {
-        // Fallback: copiar al portapapeles
-        const text = `¡Juega ${gameName} de Aquino Studios! ${window.location.href}`;
-        navigator.clipboard.writeText(text).then(() => {
-            alert('¡Enlace copiado al portapapeles!');
-        });
-    }
-}
+// ============================================
+// VALIDACIÓN DE FORMULARIO
+// ============================================
 
-function notifyMe() {
-    const email = prompt('Introduce tu correo para recibir notificaciones cuando salga el nuevo juego:');
-    if (email && email.includes('@')) {
-        alert('¡Gracias! Te notificaremos cuando esté disponible.');
-    } else if (email) {
-        alert('Por favor introduce un correo válido.');
-    }
-}
-
-// ------------------------------------------
-// 8. NEWSLETTER
-// ------------------------------------------
-function subscribeNewsletter(e) {
+function initFormValidation() {
+  elements.contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const input = e.target.querySelector('input');
-    const email = input.value;
     
-    if (email && email.includes('@')) {
-        alert(`¡Gracias por suscribirte! Te enviaremos novedades a ${email}`);
-        input.value = '';
-    } else {
-        alert('Por favor introduce un correo válido.');
+    const inputs = elements.contactForm.querySelectorAll('input, textarea');
+    const name = inputs[0].value;
+    const email = inputs[1].value;
+    const message = inputs[2].value;
+
+    if (!name || !email || !message) {
+      showNotification('Por favor completa todos los campos', 'error');
+      return;
     }
+
+    if (!isValidEmail(email)) {
+      showNotification('Por favor usa un email válido', 'error');
+      return;
+    }
+
+    showNotification('Procesando solicitud...', 'info');
+    
+    setTimeout(() => {
+      closeModal();
+      showNotification('¡Solicitud enviada! Te contactaremos pronto.', 'success');
+      elements.contactForm.reset();
+    }, 1500);
+  });
 }
 
-// ------------------------------------------
-// 9. PARALLAX SUAVE
-// ------------------------------------------
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallax = document.querySelector('.header-content');
-    if (parallax) {
-        parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+function isValidEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
+
+// ============================================
+// NOTIFICACIONES
+// ============================================
+
+function showNotification(message, type = 'info') {
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.textContent = message;
+  
+  notification.style.cssText = `
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    padding: 16px 24px;
+    background: ${
+      type === 'success' ? '#10b981' :
+      type === 'error' ? '#ef4444' :
+      '#3b82f6'
+    };
+    color: white;
+    border-radius: 8px;
+    z-index: 300;
+    animation: slideInRight 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  `;
+
+  document.body.appendChild(notification);
+
+  setTimeout(() => {
+    notification.style.animation = 'slideOutRight 0.3s ease';
+    setTimeout(() => notification.remove(), 300);
+  }, 4000);
+}
+
+// ============================================
+// NAVBAR MEJORADA
+// ============================================
+
+function initNavbar() {
+  let lastScrollTop = 0;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+      elements.navbar.classList.add('hidden');
+    } else {
+      elements.navbar.classList.remove('hidden');
     }
-});
+
+    lastScrollTop = scrollTop;
+
+    if (scrollTop > 10) {
+      elements.navbar.style.borderBottomColor = 'rgba(45, 45, 45, 0.5)';
+    } else {
+      elements.navbar.style.borderBottomColor = 'rgb(45, 45, 45)';
+    }
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href !== '#' && document.querySelector(href)) {
+        e.preventDefault();
+        document.querySelector(href).scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    });
+  });
+}
+
+// ============================================
+// ANIMACIONES ADICIONALES
+// ============================================
+
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes slideInRight {
+    from {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
+
+// ============================================
+// LOGGING
+// ============================================
+
+console.log('%c🔴 Código Rojo v1.0', 'color: #dc2626; font-size: 14px; font-weight: bold;');
+console.log('%cBienvenido a la élite digital', 'color: #b0b0b0; font-style: italic;');
