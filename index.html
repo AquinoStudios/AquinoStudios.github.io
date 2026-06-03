@@ -1,336 +1,306 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aquino Studios - Obby Imposible</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Código Rojo - Comunidad digital privada de profesionales de alto nivel">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>Código Rojo | Comunidad Digital Exclusiva</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Fondo animado -->
-    <canvas id="bgCanvas"></canvas>
+  <!-- Fondo con efecto sutil -->
+  <div class="background-effects">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+  </div>
 
-    <!-- Barra de navegación superior -->
-    <nav class="navbar">
-        <div class="nav-brand">AQUINO STUDIOS</div>
-        <div class="nav-links">
-            <a href="#inicio" class="nav-link active">Inicio</a>
-            <a href="#juegos" class="nav-link">Juegos</a>
-            <a href="#nosotros" class="nav-link">Nosotros</a>
-            <a href="#contacto" class="nav-link">Contacto</a>
-        </div>
-        <div class="nav-social">
-            <a href="https://youtube.com/tu-canal" target="_blank" class="social-icon" title="YouTube">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://twitter.com/tu-cuenta" target="_blank" class="social-icon" title="Twitter/X">
-                <i class="fab fa-x-twitter"></i>
-            </a>
-            <a href="https://discord.gg/tu-invite" target="_blank" class="social-icon" title="Discord">
-                <i class="fab fa-discord"></i>
-            </a>
-            <a href="https://tiktok.com/@tu-cuenta" target="_blank" class="social-icon" title="TikTok">
-                <i class="fab fa-tiktok"></i>
-            </a>
-            <a href="https://instagram.com/tu-cuenta" target="_blank" class="social-icon" title="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </div>
-    </nav>
-
-    <!-- Header principal con logo -->
-    <header class="header" id="inicio">
-        <div class="header-content">
-            <div class="logo-wrapper">
-                <div class="logo-glow"></div>
-                <div class="logo-image">
-                    <img src="logo.png" alt="Aquino Studios Logo" id="studioLogo">
-                </div>
-            </div>
-            <div class="header-text">
-                <h1 class="glitch" data-text="AQUINO STUDIOS">AQUINO STUDIOS</h1>
-                <p class="subtitle">Creamos experiencias épicas en Roblox</p>
-                <div class="header-buttons">
-                    <a href="#juegos" class="btn btn-primary">
-                        <i class="fas fa-gamepad"></i> Ver Juegos
-                    </a>
-                    <a href="https://discord.gg/tu-invite" target="_blank" class="btn btn-secondary">
-                        <i class="fab fa-discord"></i> Unirse al Discord
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </header>
-
-    <!-- Sección de Estadísticas -->
-    <section class="stats-section">
-        <div class="stats-container">
-            <div class="stat-item">
-                <i class="fas fa-users"></i>
-                <span class="stat-number" data-target="50000">0</span>
-                <span class="stat-label">Jugadores</span>
-            </div>
-            <div class="stat-item">
-                <i class="fas fa-gamepad"></i>
-                <span class="stat-number" data-target="3">0</span>
-                <span class="stat-label">Juegos</span>
-            </div>
-            <div class="stat-item">
-                <i class="fas fa-heart"></i>
-                <span class="stat-number" data-target="125000">0</span>
-                <span class="stat-label">Me gusta</span>
-            </div>
-            <div class="stat-item">
-                <i class="fas fa-calendar"></i>
-                <span class="stat-number" data-target="2021">0</span>
-                <span class="stat-label">Desde</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección de Juegos -->
-    <section class="games-section" id="juegos">
-        <div class="section-header">
-            <h2 class="section-title">NUESTROS JUEGOS</h2>
-            <p class="section-desc">Descubre nuestras creaciones en Roblox</p>
-        </div>
-
-        <div class="games-grid">
-            <!-- Juego Principal: Obby Imposible -->
-            <div class="game-card featured">
-                <div class="game-badge">POPULAR</div>
-                <div class="game-image">
-                    <img src="obby-imposible.png" alt="Obby Imposible">
-                    <div class="game-overlay">
-                        <button class="play-btn-large" onclick="openGame('https://www.roblox.com/games/TU-ID-AQUI')">
-                            <i class="fas fa-play"></i> JUGAR AHORA
-                        </button>
-                    </div>
-                </div>
-                <div class="game-info">
-                    <h3 class="game-title">OBBY IMPOSIBLE</h3>
-                    <p class="game-desc">El desafío definitivo de parkour. ¿Puedes completar los 50+ niveles más difíciles de Roblox?</p>
-                    <div class="game-stats">
-                        <span><i class="fas fa-users"></i> 50K+ jugadores</span>
-                        <span><i class="fas fa-star"></i> 4.8/5</span>
-                    </div>
-                    <div class="game-tags">
-                        <span class="tag">Parkour</span>
-                        <span class="tag">Difícil</span>
-                        <span class="tag">Multijugador</span>
-                    </div>
-                    <div class="game-actions">
-                        <a href="https://www.roblox.com/games/TU-ID-AQUI" target="_blank" class="btn-game btn-play">
-                            <i class="fas fa-play"></i> Jugar
-                        </a>
-                        <button class="btn-game btn-info" onclick="showGameInfo('obby')">
-                            <i class="fas fa-info-circle"></i> Info
-                        </button>
-                        <button class="btn-game btn-share" onclick="shareGame('Obby Imposible')">
-                            <i class="fas fa-share-alt"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Juego 2: Fácil de agregar más -->
-            <div class="game-card">
-                <div class="game-image">
-                    <img src="game2.png" alt="Próximo Juego">
-                    <div class="game-overlay">
-                        <button class="play-btn-large" onclick="openGame('https://www.roblox.com/games/TU-ID-2')">
-                            <i class="fas fa-play"></i> JUGAR AHORA
-                        </button>
-                    </div>
-                </div>
-                <div class="game-info">
-                    <h3 class="game-title">SPEED RUN SIMULATOR</h3>
-                    <p class="game-desc">Corre más rápido que nadie. Compite contra tus amigos y sé el más veloz.</p>
-                    <div class="game-stats">
-                        <span><i class="fas fa-users"></i> 25K+ jugadores</span>
-                        <span><i class="fas fa-star"></i> 4.5/5</span>
-                    </div>
-                    <div class="game-tags">
-                        <span class="tag">Simulador</span>
-                        <span class="tag">Carreras</span>
-                    </div>
-                    <div class="game-actions">
-                        <a href="https://www.roblox.com/games/TU-ID-2" target="_blank" class="btn-game btn-play">
-                            <i class="fas fa-play"></i> Jugar
-                        </a>
-                        <button class="btn-game btn-info" onclick="showGameInfo('speed')">
-                            <i class="fas fa-info-circle"></i> Info
-                        </button>
-                        <button class="btn-game btn-share" onclick="shareGame('Speed Run Simulator')">
-                            <i class="fas fa-share-alt"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Juego 3: Placeholder para futuro -->
-            <div class="game-card coming-soon">
-                <div class="game-image">
-                    <div class="placeholder-content">
-                        <i class="fas fa-question"></i>
-                        <span>PRÓXIMAMENTE</span>
-                    </div>
-                </div>
-                <div class="game-info">
-                    <h3 class="game-title">?????</h3>
-                    <p class="game-desc">Un nuevo proyecto secreto está en desarrollo. ¡Mantente atento a nuestras redes!</p>
-                    <div class="game-tags">
-                        <span class="tag tag-soon">En desarrollo</span>
-                    </div>
-                    <div class="game-actions">
-                        <button class="btn-game btn-notify" onclick="notifyMe()">
-                            <i class="fas fa-bell"></i> Notificarme
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Sobre Nosotros -->
-    <section class="about-section" id="nosotros">
-        <div class="about-container">
-            <div class="about-content">
-                <h2 class="section-title">SOBRE NOSOTROS</h2>
-                <p>
-                    Aquino Studios nació en 2021 con una misión clara: crear los juegos más divertidos 
-                    y desafiantes de Roblox. Somos un equipo apasionado por los videojuegos que busca 
-                    innovar constantemente.
-                </p>
-                <p>
-                    Desde nuestro primer juego hasta el día de hoy, hemos crecido gracias a la increíble 
-                    comunidad que nos apoya. Cada like, cada comentario y cada partida nos motiva a seguir 
-                    mejorando.
-                </p>
-                <div class="about-features">
-                    <div class="feature">
-                        <i class="fas fa-rocket"></i>
-                        <span>Innovación constante</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-heart"></i>
-                        <span>Hecho con pasión</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-users"></i>
-                        <span>Comunidad primero</span>
-                    </div>
-                </div>
-            </div>
-            <div class="about-image">
-                <div class="image-frame">
-                    <img src="team.png" alt="Nuestro equipo">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección de Redes Sociales -->
-    <section class="social-section" id="contacto">
-        <h2 class="section-title">SÍGUENOS</h2>
-        <p class="section-desc">Únete a nuestra comunidad y no te pierdas ninguna novedad</p>
-        
-        <div class="social-grid">
-            <a href="https://youtube.com/tu-canal" target="_blank" class="social-card youtube">
-                <i class="fab fa-youtube"></i>
-                <span>YouTube</span>
-                <small>Suscríbete</small>
-            </a>
-            <a href="https://discord.gg/tu-invite" target="_blank" class="social-card discord">
-                <i class="fab fa-discord"></i>
-                <span>Discord</span>
-                <small>Únete al servidor</small>
-            </a>
-            <a href="https://twitter.com/tu-cuenta" target="_blank" class="social-card twitter">
-                <i class="fab fa-x-twitter"></i>
-                <span>Twitter / X</span>
-                <small>Síguenos</small>
-            </a>
-            <a href="https://tiktok.com/@tu-cuenta" target="_blank" class="social-card tiktok">
-                <i class="fab fa-tiktok"></i>
-                <span>TikTok</span>
-                <small>Videos divertidos</small>
-            </a>
-            <a href="https://instagram.com/tu-cuenta" target="_blank" class="social-card instagram">
-                <i class="fab fa-instagram"></i>
-                <span>Instagram</span>
-                <small>Behind the scenes</small>
-            </a>
-            <a href="https://roblox.com/groups/tu-grupo" target="_blank" class="social-card roblox">
-                <i class="fas fa-cube"></i>
-                <span>Grupo Roblox</span>
-                <small>Únete al grupo</small>
-            </a>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter-section">
-        <div class="newsletter-content">
-            <h3>¿Quieres ser el primero en enterarte de las novedades?</h3>
-            <p>Suscríbete para recibir noticias sobre actualizaciones y nuevos juegos</p>
-            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
-                <input type="email" placeholder="Tu correo electrónico" required>
-                <button type="submit" class="btn-subscribe">
-                    <i class="fas fa-paper-plane"></i> Suscribirse
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>AQUINO STUDIOS</h3>
-                <p>Creando mundos, una aventura a la vez.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Enlaces</h4>
-                <a href="#inicio">Inicio</a>
-                <a href="#juegos">Juegos</a>
-                <a href="#nosotros">Nosotros</a>
-                <a href="#contacto">Contacto</a>
-            </div>
-            <div class="footer-social">
-                <h4>Redes</h4>
-                <div class="footer-social-icons">
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-discord"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Aquino Studios. Todos los derechos reservados.</p>
-            <p class="made-with">Hecho con <i class="fas fa-heart"></i> para la comunidad de Roblox</p>
-        </div>
-    </footer>
-
-    <!-- Modal para información de juegos -->
-    <div id="gameModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div id="modalBody"></div>
-        </div>
+  <!-- Navegación flotante -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <span class="brand-icon">⚡</span>
+        <span class="brand-name">Código Rojo</span>
+      </div>
+      <div class="nav-links">
+        <a href="#beneficios">Beneficios</a>
+        <a href="#funcionamiento">Cómo Funciona</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#contacto" class="nav-cta">Contactar</a>
+      </div>
     </div>
+  </nav>
 
-    <!-- Botón volver arriba -->
-    <button id="backToTop" class="back-to-top" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title" data-reveal>Bienvenido a la Élite Digital</h1>
+      <p class="hero-subtitle" data-reveal>Acceso exclusivo a contenido, herramientas y una comunidad de profesionales verificados</p>
+      
+      <div class="hero-cta" data-reveal>
+        <button class="btn btn-primary" id="btnSolicitar">Solicitar Acceso</button>
+        <button class="btn btn-secondary" id="btnTelegram">Únete a Telegram</button>
+      </div>
 
-    <script src="script.js"></script>
+      <div class="hero-stats">
+        <div class="stat" data-reveal>
+          <span class="stat-number" data-target="2847">0</span>
+          <span class="stat-label">Miembros Activos</span>
+        </div>
+        <div class="divider"></div>
+        <div class="stat" data-reveal>
+          <span class="stat-label">Verificado ✓</span>
+          <span class="stat-number">Comunidad Auténtica</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section id="beneficios" class="section beneficios">
+    <div class="container">
+      <h2 class="section-title" data-reveal>¿Qué Ofrece Código Rojo?</h2>
+      <p class="section-subtitle" data-reveal>Acceso a recursos, red y mentoría para profesionales serios</p>
+
+      <div class="beneficios-grid">
+        <div class="benefit-card" data-reveal>
+          <div class="benefit-icon">🔐</div>
+          <h3>Contenido Exclusivo</h3>
+          <p>Estrategias, case studies y recursos disponibles solo para miembros verificados</p>
+        </div>
+
+        <div class="benefit-card" data-reveal>
+          <div class="benefit-icon">👥</div>
+          <h3>Red de Profesionales</h3>
+          <p>Conecta con expertos. Colabora, aprende e impulsa proyectos juntos</p>
+        </div>
+
+        <div class="benefit-card" data-reveal>
+          <div class="benefit-icon">🚀</div>
+          <h3>Herramientas Premium</h3>
+          <p>Utilidades, templates y software especializado para acelerar resultados</p>
+        </div>
+
+        <div class="benefit-card" data-reveal>
+          <div class="benefit-icon">📊</div>
+          <h3>Mentoría Privada</h3>
+          <p>Sesiones 1-a-1 con expertos según tus objetivos y desafíos actuales</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO FUNCIONA -->
+  <section id="funcionamiento" class="section how-it-works">
+    <div class="container">
+      <h2 class="section-title" data-reveal>¿Cómo Acceder?</h2>
+      <p class="section-subtitle" data-reveal>Cuatro pasos sencillos</p>
+
+      <div class="steps-container">
+        <div class="step" data-reveal>
+          <div class="step-number">1</div>
+          <div class="step-icon">📝</div>
+          <h3>Completa Solicitud</h3>
+          <p>Cuéntanos sobre ti y por qué te interesa la comunidad</p>
+        </div>
+
+        <div class="step-arrow">→</div>
+
+        <div class="step" data-reveal>
+          <div class="step-number">2</div>
+          <div class="step-icon">✓</div>
+          <h3>Verificación</h3>
+          <p>Nuestro equipo revisa tu perfil (24-48 horas)</p>
+        </div>
+
+        <div class="step-arrow">→</div>
+
+        <div class="step" data-reveal>
+          <div class="step-number">3</div>
+          <div class="step-icon">🔑</div>
+          <h3>Acceso Inmediato</h3>
+          <p>Recibe credenciales y acceso a plataforma premium</p>
+        </div>
+
+        <div class="step-arrow">→</div>
+
+        <div class="step" data-reveal>
+          <div class="step-number">4</div>
+          <div class="step-icon">⭐</div>
+          <h3>Disfruta Beneficios</h3>
+          <p>Colabora, accede a mentoría y contenido exclusivo</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTADÍSTICAS -->
+  <section id="stats" class="section stats-section">
+    <div class="container">
+      <h2 class="section-title" data-reveal>Números que Hablan</h2>
+      
+      <div class="stats-grid">
+        <div class="stat-box" data-reveal>
+          <div class="stat-count" data-target="2847">0</div>
+          <p>Miembros Activos</p>
+        </div>
+
+        <div class="stat-box" data-reveal>
+          <div class="stat-count" data-target="48">0</div>
+          <p>Países Representados</p>
+        </div>
+
+        <div class="stat-box" data-reveal>
+          <div class="stat-count" data-target="156">0</div>
+          <p>Proyectos Colaborativos</p>
+        </div>
+
+        <div class="stat-box" data-reveal>
+          <div class="stat-count" data-target="98">0</div>
+          <p>% Satisfacción</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section faq-section">
+    <div class="container">
+      <h2 class="section-title" data-reveal>Preguntas Frecuentes</h2>
+
+      <div class="faq-list">
+        <div class="faq-item" data-reveal>
+          <button class="faq-question">
+            <span>¿Cuáles son los criterios para ser aceptado?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Buscamos profesionales con experiencia demostrable y mentalidad de crecimiento. No es solo sobre ingresos, sino sobre trayectoria y potencial.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-question">
+            <span>¿Puedo cancelar en cualquier momento?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sí. No hay contratos vinculantes. Puedes cancelar sin penalizaciones, aunque recomendamos mantener la membresía para maximizar el retorno.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-question">
+            <span>¿Hay período de prueba?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Ofrecemos 7 días de acceso completo. Si no es lo tuyo, te devolvemos el dinero sin preguntas.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-question">
+            <span>¿Es segura mi información personal?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Utilizamos encriptación de nivel empresarial y cumplimos con GDPR. Tu privacidad es prioridad.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-question">
+            <span>¿Cómo funciona la mentoría?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Las sesiones se realizan vía videollamada (Zoom/Teams) a hora que convenga. Los mentores tienen expertise en startups, finanzas, marketing y tech.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-question">
+            <span>¿Cuál es el próximo paso?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Haz clic en "Solicitar Acceso" o únete a nuestro Telegram para conocer más sobre la comunidad antes de solicitar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section id="contacto" class="section cta-final">
+    <div class="container">
+      <h2 class="section-title" data-reveal>¿Listo para Comenzar?</h2>
+      <p class="section-subtitle" data-reveal>Solicita acceso o únete a nuestra comunidad en Telegram</p>
+      
+      <div class="cta-buttons" data-reveal>
+        <button class="btn btn-primary btn-large" id="btnSolicitarFinal">Solicitar Acceso</button>
+        <button class="btn btn-secondary btn-large" id="btnTelegramFinal">Ir a Telegram</button>
+      </div>
+
+      <p class="cta-small">También puedes escribirnos a: <a href="mailto:contacto@codigorojo.io">contacto@codigorojo.io</a></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Código Rojo</h4>
+          <p>Comunidad digital de profesionales verificados.</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#faq">Preguntas</a></li>
+            <li><a href="#">Privacidad</a></li>
+            <li><a href="#">Términos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Redes</h4>
+          <ul>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Telegram</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 Código Rojo. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE DE CONTACTO -->
+  <button class="floating-button" id="floatingBtn" title="Contactar">
+    <span>💬</span>
+  </button>
+
+  <!-- Modal de Contacto -->
+  <div class="contact-modal" id="contactModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">×</button>
+      <h2>Solicitar Acceso</h2>
+      <form id="contactForm" class="contact-form">
+        <input type="text" placeholder="Tu nombre" required>
+        <input type="email" placeholder="tu@email.com" required>
+        <textarea placeholder="Cuéntanos sobre ti..." rows="4" required></textarea>
+        <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
